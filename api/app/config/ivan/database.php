@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'ideanima_gcd2014_api',
-			'username'  => 'ideanima_gcd2014',
-			'password'  => 'gcd2014',
+			'database'  => 'gcd2014_api',
+			'username'  => 'root',
+			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
