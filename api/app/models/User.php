@@ -34,6 +34,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     public function posts(){
         return $this->hasMany('Post');
     }
+
+    public function socialUsers(){
+        return $this->hasMany('SocialUser');
+    }
     /**
      * Get the unique identifier for the user.
      *

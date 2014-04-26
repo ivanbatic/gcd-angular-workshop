@@ -6,7 +6,8 @@ class PostsController extends BaseApiController
 
     public function getPosts()
     {
-        return $this->apiResponse->setField('posts', \Auth::user()->posts()->toArray());
+        $posts = \Auth::user()->posts;
+        return $this->apiResponse->setField('posts', $posts->toArray())->toJsonResponse();
     }
 
     public function createPost()
@@ -24,7 +25,6 @@ class PostsController extends BaseApiController
             $post->save();
             return $this->apiResponse->setField('post', $post->toArray())->toJsonResponse();
         } else {
-
             return $this->apiResponse->setMessageBag($validator->messages())->toJsonResponse();
         }
 

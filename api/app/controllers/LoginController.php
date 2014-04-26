@@ -75,7 +75,9 @@ class LoginController extends BaseApiController
     public function getCurrentUser()
     {
         if (\Auth::check()) {
-            return $this->apiResponse->setField('user', \Auth::user()->toArray())->toJsonResponse();
+            $user = \Auth::user();
+            $user->load('socialUsers', 'socialUsers.socialNetwork');
+            return $this->apiResponse->setField('user', $user->toArray())->toJsonResponse();
         } else {
             return $this->apiResponse->setStatusCode(401)->toJsonResponse();
         }

@@ -10,7 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+\Auth::loginUsingId(1);
 App::bind('\Facebook', function ($app) {
         return new Facebook(\Config::get('app.social.facebook'));
     }
@@ -20,7 +20,7 @@ Route::filter('authenticated', function () {
         if (!\Auth::check()) {
             $response = new ApiResponse(new \Illuminate\Support\MessageBag([]));
 
-            return $response->setStatusCode(403)->setField('error','You are not logged in')->toJsonResponse();
+            return $response->setStatusCode(403)->addMessage('error', 'You are not logged in')->toJsonResponse();
         }
     }
 );
@@ -30,9 +30,6 @@ Route::post('login', 'LoginController@login');
 Route::post('login/facebook', 'LoginController@facebook');
 Route::get('current-user', 'LoginController@getCurrentUser');
 Route::any('logout', 'LoginController@logout');
-
-Route::get('user/{id}/videos', 'UserProfileController@getVideos');
-Route::post('user/{id}/videos/add', 'UserProfileController@addVideo');
 
 Route::group(array('before' => 'authenticated'), function()
 {
