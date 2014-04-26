@@ -32,6 +32,14 @@ class FacebookUserProvider extends UserProvider
     public function fetchUser()
     {
         $me = $this->getMe();
+        $me += [
+            'birthday' => null,
+            'first_name' => null,
+            'last_name' => null,
+            'link' => null,
+            'email' => null,
+            'gender' => null
+        ];
 
         $this->setUserAttributes([
                 'social_network_id' => \SocialNetwork::getId('facebook'),
