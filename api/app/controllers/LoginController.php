@@ -8,9 +8,11 @@ class LoginController extends BaseApiController
         $token   = \Input::get('access_token');
         $gateway = new \Auth\UserGateway();
         $user    = $gateway->acceptSocialUserByToken('Facebook', $token);
-        \Auth::login($user);
+        \Auth::login($user, true);
+        $userArray = $user->toArray();
+        $userArray['facebook_id'] = $user->socialUsers->toArray()[0]['social_id'];
         return $this->apiResponse
-            ->setField('user', $user->toArray())
+            ->setField('user', $userArray)
             ->toJsonResponse();
     }
 

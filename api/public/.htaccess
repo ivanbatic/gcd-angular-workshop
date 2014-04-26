@@ -1,6 +1,7 @@
 
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+php_value session.cookie_domain "gcd2014.com"
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
