@@ -18,7 +18,7 @@ App::bind('\Facebook', function ($app) {
 
 Route::filter('authenticated', function () {
         if (!\Auth::check()) {
-            $response = new ApiResponse(new \Illuminate\Support\MessageBag([]));
+            $response = new ApiResponse(new \Illuminate\Support\MessageBag(array()));
 
             return $response->setStatusCode(403)->addMessage('error', 'You are not logged in')->toJsonResponse();
         }
