@@ -11,7 +11,21 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::post('register', 'LoginController@register');
+Route::post('login', 'LoginController@login');
+Route::post('login/facebook', 'LoginController@facebook');
+Route::get('current-user', 'LoginController@getCurrentUser');
+Route::any('logout', 'LoginController@logout');
+
+Route::post('profile/update', 'UserProfileController@update');
+Route::get('user/{id}/videos', 'UserProfileController@getVideos');
+Route::post('user/{id}/videos/add', 'UserProfileController@addVideo');
+
+Route::get('posts', 'PostsController@getAll');
+
+Route::any('{all}', function () {
+        $response = Response::make(['error'=> 'Invalid request'], 404);
+
+        return $response;
+    }
+)->where('all', '.*');
