@@ -187,11 +187,11 @@ return array(
 
 	),
 
-    'social' => [
-        'facebook' => [
+    'social' => array(
+        'facebook' => array(
             'appId' => '694679910570398',
             'secret' => 'e1a0b673c231074aa357d3f8ead5da01',
-        ]
-    ]
+        )
+    )
 
 );
