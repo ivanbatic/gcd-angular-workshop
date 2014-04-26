@@ -10,7 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-\Auth::loginUsingId(1);
+//\Auth::loginUsingId(1);
 App::bind('\Facebook', function ($app) {
         return new Facebook(\Config::get('app.social.facebook'));
     }
