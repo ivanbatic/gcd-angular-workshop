@@ -31,12 +31,12 @@ Route::post('login/facebook', 'LoginController@facebook');
 Route::get('current-user', 'LoginController@getCurrentUser');
 Route::any('logout', 'LoginController@logout');
 
-Route::post('profile/update', 'UserProfileController@update');
 Route::get('user/{id}/videos', 'UserProfileController@getVideos');
 Route::post('user/{id}/videos/add', 'UserProfileController@addVideo');
 
 Route::group(array('before' => 'authenticated'), function()
 {
+    Route::post('profile/update', 'UserProfileController@update');
     Route::post('posts', 'PostsController@createPost');
     Route::get('posts', 'PostsController@getPosts');
 });
