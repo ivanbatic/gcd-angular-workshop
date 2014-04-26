@@ -55,7 +55,7 @@ class UserGateway
                     )
                 );
 
-                $realUser->photo_url = $provider->pullProfilePhoto($realUser->id);
+//                $realUser->photo_url = $provider->pullProfilePhoto($realUser->id);
                 $realUser->save();
             }
             $userData->setUserAttribute('user_id', $realUser->id);
