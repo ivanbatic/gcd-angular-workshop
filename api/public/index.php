@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     }
     exit;
 }
-ini_set("session.cookie_domain", ".gcd2014.com");
+ini_set("session.cookie_domain", ".{$_SERVER['HTTP_HOST']}");
 
 /**
  * Laravel - A PHP Framework For Web Artisans
