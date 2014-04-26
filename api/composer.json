@@ -1,10 +1,13 @@
 {
-	"name": "Pulse API",
+	"name": "GCD - 2014 API",
 	"require": {
 		"laravel/framework": "4.1.*"
 	},
     "require-dev": {
         "way/generators": "2.*"
+    },
+    "replace": {
+        "php": "5.5.7"
     },
 	"autoload": {
 		"classmap": [
