@@ -41,7 +41,7 @@ Route::group(array('before' => 'authenticated'), function()
 
 
 Route::any('{all}', function () {
-        $response = Response::make(['error' => 'Invalid request'], 404);
+        $response = Response::make(array('error' => 'Invalid request'), 404);
 
         return $response;
     }
