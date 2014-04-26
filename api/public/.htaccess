@@ -1,7 +1,9 @@
 
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
-php_value session.cookie_domain "gcd2014.com"
+SetEnvIfNoCase ORIGIN (.*) ORIGIN=$1
+Header set Access-Control-Allow-Origin "%{ORIGIN}e"
+Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Cookie"
+Header set Access-Control-Allow-Credentials: "true"
+
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>

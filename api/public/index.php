@@ -5,11 +5,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     // return only the headers and not the content
     // only allow CORS if we're doing a GET - i.e. no saving for now.
     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']) && $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'] == 'GET') {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+        header('Access-Control-Allow-Origin: %{ORIGIN}e');
+        header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Cookie');
+        header('Access-Control-Allow-Credentials: true');
     }
     exit;
 }
+ini_set("session.cookie_domain", ".gcd2014.com");
 
 /**
  * Laravel - A PHP Framework For Web Artisans
