@@ -11,6 +11,11 @@
 |
 */
 
+App::bind('\Facebook', function ($app) {
+        return new Facebook(\Config::get('app.social.facebook'));
+    }
+);
+
 Route::post('register', 'LoginController@register');
 Route::post('login', 'LoginController@login');
 Route::post('login/facebook', 'LoginController@facebook');
