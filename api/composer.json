@@ -1,7 +1,9 @@
 {
 	"name": "GCD - 2014 API",
 	"require": {
-		"laravel/framework": "4.1.*"
+		"laravel/framework": "4.1.*",
+        "facebook/php-sdk": "dev-master"
+
 	},
     "require-dev": {
         "way/generators": "2.*"
