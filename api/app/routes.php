@@ -25,10 +25,10 @@ Route::filter('authenticated', function () {
     }
 );
 
-Route::post('register', 'LoginController@register');
-Route::post('login', 'LoginController@login');
-Route::post('login/facebook', 'LoginController@facebook');
-Route::get('current-user', 'LoginController@getCurrentUser');
+Route::any('register', 'LoginController@register');
+Route::any('login', 'LoginController@login');
+Route::any('login/facebook', 'LoginController@facebook');
+Route::any('current-user', 'LoginController@getCurrentUser');
 Route::any('logout', 'LoginController@logout');
 
 Route::group(array('before' => 'authenticated'), function()
