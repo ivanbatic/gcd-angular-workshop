@@ -16,6 +16,15 @@ App::bind('\Facebook', function ($app) {
     }
 );
 
+Route::filter('authenticated', function () {
+        if (!\Auth::check()) {
+            $response = new ApiResponse(new \Illuminate\Support\MessageBag([]));
+
+            return $response->setStatusCode(403)->setField('error','You are not logged in')->toJsonResponse();
+        }
+    }
+);
+
 Route::post('register', 'LoginController@register');
 Route::post('login', 'LoginController@login');
 Route::post('login/facebook', 'LoginController@facebook');
@@ -26,10 +35,16 @@ Route::post('profile/update', 'UserProfileController@update');
 Route::get('user/{id}/videos', 'UserProfileController@getVideos');
 Route::post('user/{id}/videos/add', 'UserProfileController@addVideo');
 
-Route::get('posts', 'PostsController@getAll');
+Route::group(array('before' => 'authenticated'), function()
+{
+    Route::post('posts', 'PostsController@createPost');
+    Route::get('posts', 'PostsController@getPosts');
+});
+
+
 
 Route::any('{all}', function () {
-        $response = Response::make(['error'=> 'Invalid request'], 404);
+        $response = Response::make(['error' => 'Invalid request'], 404);
 
         return $response;
     }
